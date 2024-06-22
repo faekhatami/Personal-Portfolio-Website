@@ -10,8 +10,8 @@ body {
     font-family: 'Open Sans', Arial, sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: var(--light-color);
+    color: var(--dark-color);
     margin: 0;
     padding: 0;
     padding-bottom: calc(var(--footer-height) + 15px);
@@ -24,7 +24,7 @@ h2 {
 
 header {
     background-color: var(--dark-color);
-    color: #fff;
+    color: var(--light-color);
     padding: 10px 0;
     text-align: center;
 }
@@ -63,7 +63,7 @@ footer {
     text-align: center;
     padding: 10px 0;
     background-color: var(--dark-color);
-    color: #fff;
+    color: var(--light-color);
     position: fixed;
     width: 100%;
     height: var(--footer-height);
