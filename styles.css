@@ -103,3 +103,7 @@ footer {
     height: var(--footer-height);
     bottom: 0;
 }
+
+html {
+    scroll-behavior: smooth;
+}
