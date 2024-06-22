@@ -1,4 +1,8 @@
 :root {
+    --primary-color: #007BFF;
+    --secondary-color: #6c757d;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
     --footer-height: 50px;
 }
 
@@ -19,7 +23,7 @@ h2 {
 }
 
 header {
-    background-color: #333;
+    background-color: var(--dark-color);
     color: #fff;
     padding: 10px 0;
     text-align: center;
@@ -42,13 +46,14 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ffcc00;
+    color: var(--primary-color);
 }
 
 section {
     padding: 20px;
     margin: 20px;
-    background-color: #fff;
+    background-color: var(--light-color);
+    border-color: var(--secondary-color);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -57,7 +62,7 @@ section {
 footer {
     text-align: center;
     padding: 10px 0;
-    background-color: #333;
+    background-color: var(--dark-color);
     color: #fff;
     position: fixed;
     width: 100%;
