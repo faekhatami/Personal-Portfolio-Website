@@ -1,5 +1,6 @@
 :root {
     --primary-color: #007BFF;
+    --primary-color-dark: #0056b3;
     --secondary-color: #6c757d;
     --light-color: #f8f9fa;
     --dark-color: #343a40;
@@ -58,6 +59,39 @@ section {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 16px;
+    color: var(--light-color);
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--primary-color-dark);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input,
+textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+}
 
 footer {
     text-align: center;
