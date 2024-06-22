@@ -5,6 +5,7 @@
     --light-color: #f8f9fa;
     --dark-color: #343a40;
     --footer-height: 50px;
+    --header-height: 135px;
 }
 
 body {
@@ -15,7 +16,8 @@ body {
     color: var(--dark-color);
     margin: 0;
     padding: 0;
-    padding-bottom: calc(var(--footer-height) + 15px);
+    padding-top: calc(var(--header-height) + 35px);
+    padding-bottom: calc(var(--footer-height) + 35px);
 }
 
 h1,
@@ -26,8 +28,13 @@ h2 {
 header {
     background-color: var(--dark-color);
     color: var(--light-color);
-    padding: 10px 0;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
     text-align: center;
+    height: var(--header-height);
 }
 
 nav ul {
@@ -95,7 +102,7 @@ textarea {
 
 footer {
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0;
     background-color: var(--dark-color);
     color: var(--light-color);
     position: fixed;
@@ -106,4 +113,5 @@ footer {
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
 }
