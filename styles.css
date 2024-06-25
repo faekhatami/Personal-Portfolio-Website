@@ -18,6 +18,9 @@ body {
     padding: 0;
     padding-top: calc(var(--header-height) + 35px);
     padding-bottom: calc(var(--footer-height) + 35px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1,
@@ -35,16 +38,23 @@ header {
     z-index: 1000;
     text-align: center;
     height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    gap: 20px;
+    margin: 0;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 10px;
+    margin: 0;
 }
 
 nav ul li a {
@@ -57,13 +67,90 @@ nav ul li a:hover {
     color: var(--primary-color);
 }
 
-section {
+main {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
-    margin: 20px;
+    box-sizing: border-box;
+}
+
+section {
+    width: 100%;
+    padding: 20px;
+    margin: 20px 0;
     background-color: var(--light-color);
-    border-color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#skills ul,
+#projects ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#skills ul li,
+#projects ul li {
+    margin: 0;
+}
+
+@media (min-width: 600px) {
+
+    #skills ul,
+    #projects ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #skills ul li,
+    #projects ul li {
+        flex: 1 1 calc(50% - 20px);
+        margin: 10px;
+    }
+}
+
+@media (min-width: 900px) {
+
+    #skills ul li,
+    #projects ul li {
+        flex: 1 1 calc(33.33% - 20px);
+    }
+}
+
+#hero {
+    background: url('/ProPic.jpg') no-repeat center center/contain;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    width: 100%;
+}
+
+#hero h2 {
+    font-size: 40px;
+    padding-top: 80px;
+    margin: 0;
+}
+
+#hero p {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+#hero a {
+    text-decoration: none;
 }
 
 .btn {
@@ -86,10 +173,15 @@ section {
 form {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
 }
 
 label {
     margin-top: 10px;
+    width: 100%;
+    text-align: left;
 }
 
 input,
@@ -98,6 +190,8 @@ textarea {
     margin-top: 5px;
     border: 1px solid var(--secondary-color);
     border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 footer {
@@ -114,26 +208,4 @@ footer {
 html {
     scroll-behavior: smooth;
     scroll-padding-top: var(--header-height);
-}
-
-#hero {
-    background: url('/ProPic.jpg') no-repeat center center/contain;
-    color: #fff;
-    text-align: center;
-    padding: 100px 20px;
-}
-
-#hero h2 {
-    font-size: 40px;
-    padding-top: 80px;
-    margin: 0;
-}
-
-#hero p {
-    font-size: 24px;
-    margin: 10px 0;
-}
-
-#hero a {
-    text-decoration: none;
 }
