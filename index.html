@@ -84,6 +84,7 @@
 
                 <button type="submit" class="btn">Send</button>
             </form>
+            <p id="form-status"></p>
         </section>
     </main>
 
@@ -105,12 +106,15 @@
             const nameInput = document.getElementById('name');
             const emailInput = document.getElementById('email');
             const messageInput = document.getElementById('message');
+            const formStatus = document.getElementById('form-status');
 
             const nameError = document.getElementById('nameError');
             const emailError = document.getElementById('emailError');
             const messageError = document.getElementById('messageError');
 
             contactForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent the default form submission
+
                 let valid = true;
 
                 // Name validation
@@ -137,8 +141,36 @@
                     messageError.textContent = '';
                 }
 
-                if (!valid) {
-                    event.preventDefault();
+                if (valid) {
+                    // Send form data using Fetch API
+                    const formData = {
+                        name: nameInput.value,
+                        email: emailInput.value,
+                        message: messageInput.value
+                    };
+
+                    fetch('https://your-server-endpoint.com/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                return response.json();
+                            }
+                            throw new Error('Network response was not ok.');
+                        })
+                        .then(data => {
+                            formStatus.textContent = 'Message sent successfully!';
+                            formStatus.style.color = 'green';
+                            contactForm.reset(); // Reset the form fields
+                        })
+                        .catch(error => {
+                            formStatus.textContent = 'Failed to send message. Please try again later.';
+                            formStatus.style.color = 'red';
+                        });
                 }
             });
 
@@ -169,10 +201,10 @@
                         const repoElement = document.createElement('div');
                         repoElement.classList.add('repo');
                         repoElement.innerHTML = `
-                            <h3>${repo.name}</h3>
-                            <p>${repo.description || 'No description available.'}</p>
-                            <a href="${repo.html_url}" target="_blank">View on GitHub</a>
-                        `;
+                    <h3>${repo.name}</h3>
+                    <p>${repo.description || 'No description available.'}</p>
+                    <a href="${repo.html_url}" target="_blank">View on GitHub</a>
+                `;
                         reposContainer.appendChild(repoElement);
                     });
                 })
