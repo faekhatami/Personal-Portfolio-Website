@@ -64,13 +64,19 @@
 
         <section id="contact">
             <h2>Contact</h2>
-            <form action="mailto:faekhatami@gmail.com" method="post" enctype="text/plain">
+            <form id="contactForm">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
+                <span class="error" id="nameError"></span>
+
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
+                <span class="error" id="emailError"></span>
+
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" required></textarea>
+                <span class="error" id="messageError"></span>
+
                 <button type="submit" class="btn">Send</button>
             </form>
         </section>
@@ -88,9 +94,55 @@
             navToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('show');
             });
+
+            // Form validation
+            const contactForm = document.getElementById('contactForm');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const messageError = document.getElementById('messageError');
+
+            contactForm.addEventListener('submit', (event) => {
+                let valid = true;
+
+                // Name validation
+                if (nameInput.value.trim() === '') {
+                    valid = false;
+                    nameError.textContent = 'Name is required.';
+                } else {
+                    nameError.textContent = '';
+                }
+
+                // Email validation
+                if (!validateEmail(emailInput.value)) {
+                    valid = false;
+                    emailError.textContent = 'Invalid email address.';
+                } else {
+                    emailError.textContent = '';
+                }
+
+                // Message validation
+                if (messageInput.value.trim() === '') {
+                    valid = false;
+                    messageError.textContent = 'Message is required.';
+                } else {
+                    messageError.textContent = '';
+                }
+
+                if (!valid) {
+                    event.preventDefault();
+                }
+            });
+
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(String(email).toLowerCase());
+            }
         });
     </script>
-
 </body>
 
 </html>

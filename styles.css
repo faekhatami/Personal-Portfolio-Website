@@ -276,3 +276,9 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: var(--header-height);
 }
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
